@@ -1,0 +1,13 @@
+name: build-demo
+channels:
+  - https://repo.anaconda.com/pkgs/snowflake
+  - nodefaults
+dependencies:
+  - python=3.10
+  - snowflake-snowpark-python
+  - pip
+  # Installing nomkl fixes a number of issues for Mac M1 laptops
+  - nomkl
+#  - openssl=1.1.1
+  - pip:
+    - snowflake-cli-labs
