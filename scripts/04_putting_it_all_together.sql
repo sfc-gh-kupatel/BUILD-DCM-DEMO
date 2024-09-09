@@ -1,8 +1,5 @@
 /*-----------------------------------------------------------------------------
-BUILD 2023:   Database Change Management
 Script:       04_putting_it_all_together.sql
-Author:       Jeremiah Hansen
-Last Updated: 11/6/2023
 -----------------------------------------------------------------------------*/
 
 USE ROLE DEMO_ROLE;

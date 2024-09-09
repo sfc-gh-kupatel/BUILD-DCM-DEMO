@@ -1,8 +1,6 @@
 /*-----------------------------------------------------------------------------
-BUILD 2023:   Database Change Management
+
 Script:       00_setup_snowflake.sql
-Author:       Jeremiah Hansen
-Last Updated: 11/6/2023
 -----------------------------------------------------------------------------*/
 
 USE ROLE ACCOUNTADMIN;

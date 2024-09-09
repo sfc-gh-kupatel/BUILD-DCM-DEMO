@@ -1,8 +1,5 @@
 /*-----------------------------------------------------------------------------
-BUILD 2023:   Database Change Management
 Script:       05_snowcli.sql
-Author:       Jeremiah Hansen
-Last Updated: 11/6/2023
 -----------------------------------------------------------------------------*/
 
 USE ROLE DEMO_ROLE;
@@ -34,6 +31,7 @@ DESCRIBE TABLE MY_INVENTORY;
 -- snow sql -q "EXECUTE IMMEDIATE FROM @DEMO_REPO/branches/main/snowflake_objects/deploy_objects.sql"
 
 DESCRIBE TABLE MY_INVENTORY;
+
 
 
 -- Some things to note:

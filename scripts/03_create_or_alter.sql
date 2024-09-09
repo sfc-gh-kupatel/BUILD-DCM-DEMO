@@ -1,8 +1,5 @@
 /*-----------------------------------------------------------------------------
-BUILD 2023:   Database Change Management
 Script:       03_create_or_alter.sql
-Author:       Jeremiah Hansen
-Last Updated: 11/6/2023
 -----------------------------------------------------------------------------*/
 
 USE ROLE DEMO_ROLE;

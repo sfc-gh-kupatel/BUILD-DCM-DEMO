@@ -1,49 +1,46 @@
 /*-----------------------------------------------------------------------------
 BUILD 2023:   Database Change Management
-Script:       01_git_integration.sql
-Author:       Jeremiah Hansen
-Last Updated: 11/6/2023
 -----------------------------------------------------------------------------*/
 
 -- For now steps 1-3 should be run as ACCOUNTADMIN
 USE ROLE ACCOUNTADMIN;
 USE WAREHOUSE DEMO_WH;
 USE SCHEMA DEMO_DB.DEMO_SCHEMA;
-
+SELECT current_account();
 
 -- ----------------------------------------------------------------------------
 -- Step #1: Create a Secret to store the GitHub PAT
 -- ----------------------------------------------------------------------------
-CREATE OR REPLACE SECRET JHANSEN_GITHUB_SECRET
+CREATE OR REPLACE SECRET KUPATEL_GITHUB_SECRET
   TYPE = PASSWORD
-  USERNAME = 'github-user-name'
-  PASSWORD = 'github-access-token';
+  USERNAME = 'sfc-gh-kupatel'
+  PASSWORD = 'token';
 
 SHOW SECRETS;
-DESCRIBE SECRET JHANSEN_GITHUB_SECRET;
+DESCRIBE SECRET KUPATEL_GITHUB_SECRET;
 
 
 -- ----------------------------------------------------------------------------
 -- Step #2: Create an Git API Integration
 -- ----------------------------------------------------------------------------
-CREATE OR REPLACE API INTEGRATION JHANSEN_GITHUB_API_INTEGRATION
+CREATE OR REPLACE API INTEGRATION KUPATEL_GITHUB_API_INTEGRATION
   API_PROVIDER = GIT_HTTPS_API
-  API_ALLOWED_PREFIXES = ('https://github.com/sfc-gh-jhansen')
-  ALLOWED_AUTHENTICATION_SECRETS = (JHANSEN_GITHUB_SECRET)
+  API_ALLOWED_PREFIXES = ('https://github.com/sfc-gh-kupatel')
+  ALLOWED_AUTHENTICATION_SECRETS = (KUPATEL_GITHUB_SECRET)
   ENABLED = TRUE;
 
 SHOW INTEGRATIONS;
 SHOW API INTEGRATIONS;
-DESCRIBE API INTEGRATION JHANSEN_GITHUB_API_INTEGRATION;
+DESCRIBE API INTEGRATION KUPATEL_GITHUB_API_INTEGRATION;
 
 
 -- ----------------------------------------------------------------------------
 -- Step #3: Create a Git Repository
 -- ----------------------------------------------------------------------------
 CREATE OR REPLACE GIT REPOSITORY DEMO_REPO
-  API_INTEGRATION = JHANSEN_GITHUB_API_INTEGRATION
-  GIT_CREDENTIALS = JHANSEN_GITHUB_SECRET
-  ORIGIN = 'https://github.com/sfc-gh-jhansen/build-dcm-demo.git';
+  API_INTEGRATION = KUPATEL_GITHUB_API_INTEGRATION
+  GIT_CREDENTIALS = KUPATEL_GITHUB_SECRET
+  ORIGIN = 'https://github.com/sfc-gh-kupatel/BUILD-DCM-DEMO';
 
 SHOW GIT REPOSITORIES;
 DESCRIBE GIT REPOSITORY DEMO_REPO;
